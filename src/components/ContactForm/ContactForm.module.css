@@ -1,0 +1,42 @@
+.contactForm {
+  display: flex;
+  flex-direction: column;
+
+  border: solid 2px forestgreen;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 0, 0.6);
+}
+.contactLabel {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 25px;
+
+  color: forestgreen;
+  font-weight: 600;
+  font-size: 20;
+}
+.contactInput {
+  border: solid 2px forestgreen;
+  border-radius: 10px;
+  padding: 5px 15px;
+  margin-top: 5px;
+  margin-left: 5px;
+  background-color: rgb(34, 139, 34, 0.2);
+}
+.buttonAddContact {
+  margin: 20px 25px;
+  padding: 5px 15px;
+  font-weight: 600;
+  font-size: 20;
+  color: yellow;
+  background-color: forestgreen;
+  border: solid 2px forestgreen;
+  border-radius: 10px;
+}
+.buttonAddContact:hover {
+  color: forestgreen;
+  background-color: yellow;
+  border: solid 2px rgb(34, 139, 34);
+  box-shadow: 0 12px 16px 0 rgba(34, 139, 34, 0.44),
+    0 17px 50px 0 rgba(34, 139, 34, 0.39);
+}

@@ -1,0 +1,23 @@
+.filterForm {
+  padding: 25px;
+  border: solid 2px forestgreen;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 0, 0.6);
+}
+.contactLabel {
+  display: flex;
+
+  flex-direction: column;
+  color: forestgreen;
+  font-weight: 600;
+  font-size: 20;
+}
+.contactFilter {
+  border: solid 2px forestgreen;
+  border-radius: 10px;
+  padding: 5px 15px;
+  margin-top: 5px;
+  margin-left: 5px;
+
+  background-color: rgb(34, 139, 34, 0.2);
+}

@@ -1,0 +1,26 @@
+.contactList {
+  font-weight: 600;
+  font-size: 20px;
+  color: forestgreen;
+}
+.contacItem {
+  margin-bottom: 5px;
+}
+.buttonDelete {
+  float: right;
+
+  font-weight: 600;
+  font-size: 20;
+  color: yellow;
+  background-color: forestgreen;
+  border: solid 2px forestgreen;
+  border-radius: 8px;
+}
+
+.buttonDelete:hover {
+  color: forestgreen;
+  background-color: yellow;
+  border: solid 2px rgb(34, 139, 34);
+  box-shadow: 0 12px 16px 0 rgba(34, 139, 34, 0.44),
+    0 17px 50px 0 rgba(34, 139, 34, 0.39);
+}
