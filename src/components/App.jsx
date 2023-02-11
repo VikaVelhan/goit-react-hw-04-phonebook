@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import { useState, useEffect } from 'react';
+
+//import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import ContactForm from '../components/ContactForm/ContactForm';
 import ContactList from '../components/ContactList/ContactList';
@@ -6,7 +8,70 @@ import Filter from '../components/Filter/Filter';
 import Section from '..//components/Section/Section';
 import initialContacts from '..//Contacts/Contacts.json';
 
-export class App extends Component {
+export function App() {
+  const [contacts, setContacts] = useState(initialContacts);
+  const [filter, setFilter] = useState('');
+
+  const formSubmitHandler = ({ name, number }) => {
+    console.log(name, number);
+    const contact = {
+      id: nanoid(),
+      name: name,
+      number: number,
+    };
+    if (
+      contacts.find(
+        ({ name, number }) => name === contact.name || number === contact.number
+      )
+    ) {
+      return alert(`${name} already in contacts`);
+    } else setContacts(contacts => [contact, ...contacts]);
+  };
+
+  const handleDelete = id => {
+    setContacts(prevState => {
+      return {
+        contacts: prevState.contacts.filter(contact => contact.id !== id),
+      };
+    });
+  };
+
+  const changeFilter = e => {
+    setFilter({ filter: e.currentTarget.value });
+  };
+
+  const getVisibleFilter = () => {
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+
+  return (
+    <div
+      style={{
+        width: '70vh',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      }}
+    >
+      <Section title="Phonebook"></Section>
+      <ContactForm onSubmit={formSubmitHandler} />
+
+      <Section title="Contacts"></Section>
+      <Filter value={filter} onChange={changeFilter} />
+
+      <ContactList contacts={getVisibleFilter()} onDelete={handleDelete} />
+    </div>
+  );
+}
+
+/*export class oldApp extends Component {
   state = {
     contacts: initialContacts,
     filter: '',
@@ -85,4 +150,4 @@ export class App extends Component {
       </div>
     );
   }
-}
+}*/
