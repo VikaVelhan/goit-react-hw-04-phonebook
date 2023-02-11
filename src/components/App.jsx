@@ -19,25 +19,19 @@ export function App() {
       name: name,
       number: number,
     };
-    if (
-      contacts.find(
-        ({ name, number }) => name === contact.name || number === contact.number
-      )
-    ) {
+    if (contacts.find(({ name }) => name === contact.name)) {
       return alert(`${name} already in contacts`);
     } else setContacts(contacts => [contact, ...contacts]);
   };
 
   const handleDelete = id => {
-    setContacts(prevState => {
-      return {
-        contacts: prevState.contacts.filter(contact => contact.id !== id),
-      };
-    });
+    return setContacts(contacts =>
+      contacts.filter(contact => contact.id !== id)
+    );
   };
 
   const changeFilter = e => {
-    setFilter({ filter: e.currentTarget.value });
+    setFilter(e.currentTarget.value);
   };
 
   const getVisibleFilter = () => {
@@ -51,6 +45,12 @@ export function App() {
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
+
+  /*useEffect(() => {
+    if (contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }, [contacts]);*/
 
   return (
     <div
